@@ -2,38 +2,41 @@ import React from 'react';
 
 class CartItem extends React.Component {
     // We can use arrow function as value of this in arrow function return the instance of the class.
-    increaseQuantity = () => {
-        // this.state.qty += 1
-        // console.log('this', this)
-        // console.log('this.state', this.state);
-        // setState form 1
-        // this is known as shallow merging 
-        // this.setState({
-        //     qty: this.state.qty + 1
-        // });
+    // increaseQuantity = () => {
+    //     // this.state.qty += 1
+    //     // console.log('this', this)
+    //     // console.log('this.state', this.state);
+    //     // setState form 1
+    //     // this is known as shallow merging 
+    //     // this.setState({
+    //     //     qty: this.state.qty + 1
+    //     // });
 
-        // setState form 2
-        // if prevState required use this state
-        this.setState((prevState) => {
-            return {
-                qty : prevState.qty + 1
-            }
-        });
-    }
+    //     // setState form 2
+    //     // if prevState required use this state
+    //     this.setState((prevState) => {
+    //         return {
+    //             qty : prevState.qty + 1
+    //         }
+    //     });
+    // }
 
-    decreaseQuantity = () => {
-        this.setState((prevState) => {
-            if (prevState.qty <= 0){
-                return
-            }
-            return {
-                qty : prevState.qty - 1
-            }
-        });
-    }
+    // decreaseQuantity = () => {
+    //     this.setState((prevState) => {
+    //         if (prevState.qty <= 0){
+    //             return
+    //         }
+    //         return {
+    //             qty : prevState.qty - 1
+    //         }
+    //     });
+    // }
 
     render () {
         const {price, title, qty} = this.props.product;
+        const {a,b,c,d} = this.props;
+        console.log(this.props)
+        console.log(a, b, c, d);
         return (
             <div className='cart-item'>
                 <div className='left-block'>
@@ -51,12 +54,13 @@ class CartItem extends React.Component {
                             src='https://cdn-icons-png.flaticon.com/512/992/992651.png' 
                             // one way to increase is to Bind this to the increaseQuantity function
                             // onClick={this.increaseQuantity.bind(this)}
-                            onClick={this.increaseQuantity}
+                            onClick={() => this.props.onIncreaseQuantity(this.props.product)}
                         />
                         <img 
                             alt='decrease' 
                             className='action-icons' 
-                            src='https://cdn-icons-png.flaticon.com/512/992/992683.png' onClick={this.decreaseQuantity}
+                            src='https://cdn-icons-png.flaticon.com/512/992/992683.png' 
+                            onClick={() => this.props.onDecreaseQuantity(this.props.product)}
                         />
                         <img 
                             alt='delete' 
