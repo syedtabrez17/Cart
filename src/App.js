@@ -8,38 +8,38 @@ class App extends React.Component {
       this.state = {
           products : [
               {
-                  price: 599,
+                  price: 14999,
                   title: "Watch",
                   qty: 1,
-                  img: '',
+                  img: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
                   id: 1
               },
               {
-                  price: 15999,
+                  price: 65999,
                   title: "Mobile Phone",
                   qty: 1,
-                  img: '',
+                  img: 'https://images.unsplash.com/photo-1589492477829-5e65395b66cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
                   id: 2
               },
               {
-                  price: 299,
+                  price: 1299,
                   title:"Charger",
                   qty: 1,
-                  img: '',
+                  img: 'https://images.unsplash.com/photo-1603539550859-3a559eb00687?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80',
                   id: 3
               },
               {
                   price: 49999,
                   title: "Laptop",
                   qty: 1,
-                  img: '',
+                  img: 'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
                   id: 4
               },
               {
-                  price: 899,
+                  price: 1599,
                   title: "Earphone",
                   qty: 1,
-                  img: '',
+                  img: 'https://images.unsplash.com/photo-1632200004922-bc18602c79fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
                   id: 5
               }
           ]
@@ -97,6 +97,17 @@ class App extends React.Component {
     return count
   }
 
+  getCartTotal = () => {
+    const {products} = this.state;
+    let cartTotal = 0;
+
+    products.map((product) => {
+      cartTotal = cartTotal + product.qty * product.price;
+    });
+
+    return cartTotal;
+  }
+
   render () {
     const {products} = this.state
     return (
@@ -110,6 +121,9 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity} 
           onDeleteProduct={this.handleDeleteProduct} 
           />
+          <div style={ {fontSize: 20, padding: 10} }>
+            Total : {this.getCartTotal()}
+          </div>
       </div>
     );
   }
