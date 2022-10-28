@@ -14,8 +14,21 @@ class CartItem extends React.Component {
     }
     // We can use arrow function as value of this in arrow function return the instance of the class.
     increaseQuantity = () => {
-        console.log('this', this)
-        console.log('this.state', this.state);
+        // this.state.qty += 1
+        // console.log('this', this)
+        // console.log('this.state', this.state);
+        // setState form 1
+        // this is known as shallow merging 
+        // this.setState({
+        //     qty: this.state.qty + 1
+        // });
+
+        // setState form 2
+        this.setState((prevState) => {
+            return {
+                qty : prevState.qty + 1
+            }
+        });
     }
 
     render () {
