@@ -1,6 +1,6 @@
 import React from 'react';
 import CartItem from './CartItem';
-
+import NavBar from './Navbar';
 class Cart extends React.Component {
     constructor () {
         super();
@@ -89,18 +89,19 @@ class Cart extends React.Component {
         const {products} = this.state;
         return (
             <div className='cart'>
-            {/* <CartItem /> */}
-            {products.map((product) => {
-                return (
-                <CartItem 
-                    product={product} 
-                    key={product.id} 
-                    onIncreaseQuantity={this.handleIncreaseQuantity}
-                    onDecreaseQuantity={this.handleDecreaseQuantity} 
-                    onDeleteProduct={this.handleDeleteProduct}
-                />
-                )
-            })}
+                <NavBar />
+                {/* <CartItem /> */}
+                {products.map((product) => {
+                    return (
+                    <CartItem 
+                        product={product} 
+                        key={product.id} 
+                        onIncreaseQuantity={this.handleIncreaseQuantity}
+                        onDecreaseQuantity={this.handleDecreaseQuantity} 
+                        onDeleteProduct={this.handleDeleteProduct}
+                    />
+                    )
+                })}
             </div>
         )
     }
