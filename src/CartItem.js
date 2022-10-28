@@ -9,9 +9,12 @@ class CartItem extends React.Component {
             qty: 1,
             img: ''
         }
+        // Bind this value to increaseQuantity inside the constructor
+        // this.increaseQuantity.bind(this);
     }
-
-    increaseQuantity () {
+    // We can use arrow function as value of this in arrow function return the instance of the class.
+    increaseQuantity = () => {
+        console.log('this', this)
         console.log('this.state', this.state);
     }
 
@@ -32,7 +35,9 @@ class CartItem extends React.Component {
                             alt='increase' 
                             className='action-icons' 
                             src='https://cdn-icons-png.flaticon.com/512/992/992651.png' 
-                            onClick={this.increaseQuantity.bind(this)}
+                            // one way to increase is to Bind this to the increaseQuantity function
+                            // onClick={this.increaseQuantity.bind(this)}
+                            onClick={this.increaseQuantity}
                         />
                         <img 
                             alt='decrease' 
