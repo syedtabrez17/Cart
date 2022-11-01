@@ -101,6 +101,7 @@ class App extends React.Component {
     const {products} = this.state;
     let cartTotal = 0;
 
+    // eslint-disable-next-line array-callback-return
     products.map((product) => {
       cartTotal = cartTotal + product.qty * product.price;
     });
